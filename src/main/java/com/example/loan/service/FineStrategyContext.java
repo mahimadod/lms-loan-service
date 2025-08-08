@@ -1,6 +1,7 @@
 package com.example.loan.service;
 import com.example.loan.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -25,7 +26,7 @@ public class FineStrategyContext {
         if(member.isPresent()){
         return strategies.get(member.get().getStatus());
         }else{
-            throw new Exception("no member found");
+            throw new LMSServiceException(HttpStatus.NOT_FOUND,"no member found");
         }
     }
 }
