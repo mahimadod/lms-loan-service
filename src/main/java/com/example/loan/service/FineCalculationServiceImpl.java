@@ -1,5 +1,6 @@
 package com.example.loan.service;
 
+import com.example.exception_handler.LMSServiceException;
 import com.example.loan.entity.Loan;
 import com.example.loan.repository.LoanItemRepository;
 import com.example.loan.repository.LoanRepository;
@@ -25,7 +26,7 @@ public class FineCalculationServiceImpl implements FineCalculationService{
     private FineStrategyContext fineStrategyContext;
 
     public Map<Long, Double> calculateFines(Long memberId) throws Exception {
-        List<Loan> loans = Optional.ofNullable(loanRepo.findByMemberIdAndReturnDateIsNotNull(memberId)).orElseThrow(() -> new LMSServiceException(HttpStatus.NOT_FOUND, "Book not found with title: " + title));
+        List<Loan> loans = Optional.ofNullable(loanRepo.findByMemberIdAndReturnDateIsNotNull(memberId)).orElseThrow(() -> new LMSServiceException(HttpStatus.NOT_FOUND, "Book not found with memberid: " + memberId));
         Map<Long, Double> fineMap = new HashMap<>();
         for (Loan loan : loans) {
             long daysLate = ChronoUnit.DAYS.between(loan.getDueDate(), loan.getReturnDate());

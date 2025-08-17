@@ -1,4 +1,5 @@
 package com.example.loan.service;
+import com.example.exception_handler.LMSServiceException;
 import com.example.loan.entity.Member;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
