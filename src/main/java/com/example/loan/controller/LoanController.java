@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("/loan-service/api/loans")
+@RequestMapping("/api/loans")
 @CrossOrigin
 public class LoanController {
 

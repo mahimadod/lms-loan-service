@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/loan-service/api/fines")
+@RequestMapping("/api/fines")
 public class FineCalculationController {
 
     @Autowired
