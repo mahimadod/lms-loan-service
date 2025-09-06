@@ -50,6 +50,19 @@ pipeline {
                     }
                 }
 
+        stage('SonarQube Analysis') {
+                    steps {
+                        withSonarQubeEnv('SonarQube') {
+                            bat """
+                                mvn clean verify sonar:sonar ^
+                                    -Dsonar.projectKey=lms-loan-service ^
+                                    -Dsonar.host.url=%SONAR_HOST_URL% ^
+                                    -Dsonar.login=%SONAR_TOKEN%
+                            """
+                        }
+                    }
+                }
+
         stage('Docker Build & Push') {
             steps {
                 script {
