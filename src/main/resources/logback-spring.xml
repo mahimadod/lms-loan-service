@@ -12,7 +12,6 @@
                 <stackTrace />
                 <context />
                 <mdc />
-                <customFields>{"service":"loan-service"}</customFields>
             </providers>
         </encoder>
     </appender>
